@@ -1,0 +1,25 @@
+separator=true
+markup=pango
+interval=1
+
+[music]
+#command=~/.config/i3blocks/player-info.sh
+
+[wifi]
+command=iwgetid -r 2>/dev/null || echo "—"
+
+[memory]
+command=echo "$(free -m --si | awk '/Память:|Mem:/ {print $3}')MB"
+color=#A3BE8C
+
+[cpu]
+command=echo "$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.0f", $2}' | cut -d'%' -f1)%"
+color=#A3BE8C
+
+[temperature]
+command=echo "$(sensors 2>/dev/null | awk '/^Core 0:/ {print int($3)}' | cut -d'.' -f1)°C"
+color=#A3BE8C
+
+[time]
+command=date +"%H:%M:%S"
+color=#81A1C1

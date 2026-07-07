@@ -1,0 +1,46 @@
+[colors.primary]
+background = "#2E3440"
+foreground = "#D8DEE9"
+
+[colors.normal]
+black   = "#2E3440"
+red     = "#BF616A"
+green   = "#A3BE8C"
+yellow  = "#EBCB8B"
+blue    = "#81A1C1"
+magenta = "#B48EAD"
+cyan    = "#8FBCBB"
+white   = "#D8DEE9"
+
+[colors.bright]
+black   = "#707880"
+red     = "#BF616A"
+green   = "#A3BE8C"
+yellow  = "#EBCB8B"
+blue    = "#81A1C1"
+magenta = "#B48EAD"
+cyan    = "#8FBCBB"
+white   = "#D8DEE9"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "monospace"
+
+[cursor]
+style = "Beam"
+
+[window]
+opacity = 1.0
+decorations = "full"
+dimensions = { columns = 80, lines = 24 }
+padding = { x = 15, y = 10 }
+
+[scrolling]
+history = 10000
+multiplier = 5
+
+[bell]
+animation = "EaseOutExpo"
+command = "None"

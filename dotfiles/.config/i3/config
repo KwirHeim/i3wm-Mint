@@ -1,0 +1,84 @@
+# ПЕРЕМЕННЫЕ ----------------------------------------------------------------------------------------------------------------------
+set $mod    Mod4
+set $m1     eDP-1
+set $m2     HDMI-1
+set $font   monospace bold
+set $bg     #2E3440
+set $fg     #D8DEE9
+set $b      #81A1C1
+set $g      #A3BE8C
+set $r      #BF616A
+set $y      #EBCB8B
+set $d      #707880
+
+
+
+# ОСНОВНЫЕ НАСТРОЙКИ --------------------------------------------------------------------------------------------------------------
+font                       pango:$font 8
+
+# класс                    рамка-фон-текст-индикатор
+client.focused             $b  $b  $bg $b
+client.focused_inactive    $g  $g  $bg $g
+client.unfocused           $bg $bg $d  $d
+client.urgent              $r  $r  $bg $r
+client.background          $bg $bg $bg $bg
+
+default_border             normal 2
+default_floating_border    normal 2
+
+gaps inner                 0
+gaps outer                 0
+
+workspace_layout           tabbed
+title_align                left
+hide_edge_borders          smart_no_gaps
+tiling_drag                modifier
+floating_modifier          $mod
+focus_follows_mouse        no
+
+
+
+# ПРАВИЛА ОКОН --------------------------------------------------------------------------------------------------------------------
+include ~/.config/i3/parts/rule.conf
+
+
+
+# АВТОЗАПУСК ----------------------------------------------------------------------------------------------------------------------
+include ~/.config/i3/parts/autostart.conf
+
+
+
+# ШОРТКАТЫ ------------------------------------------------------------------------------------------------------------------------
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+q kill
+
+set $mode_system Меню питания: 1-выйти, 2-перезагрузить, 3-выключить, 4-сон
+mode "$mode_system" {
+    bindsym 1 exec --no-startup-id i3-msg exit, mode "default"
+    bindsym 2 exec --no-startup-id systemctl reboot, mode "default"
+    bindsym 3 exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym 4 exec --no-startup-id systemctl suspend, mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
+bindsym $mod+Return exec --no-startup-id alacritty
+
+include ~/.config/i3/parts/container.conf
+include ~/.config/i3/parts/systemkey.conf
+include ~/.config/i3/parts/app.conf
+include ~/.config/i3/parts/mode.conf
+include ~/.config/i3/parts/mouse.conf
+include ~/.config/i3/parts/other.conf
+
+
+
+# ПАНЕЛЬ --------------------------------------------------------------------------------------------------------------------------
+include ~/.config/i3/parts/bar.conf
+
+
+
+# ЗАКЛЮЧЕНИЕ ----------------------------------------------------------------------------------------------------------------------
+exec_always --no-startup-id ~/.config/i3/scripts/start.sh
+
